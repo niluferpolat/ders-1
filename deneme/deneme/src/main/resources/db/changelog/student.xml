@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet id="20240722-1" author="nilufer.polat">
+        <createTable tableName="book">
+            <column name="id" type="BIGINT" autoIncrement="true" startWith="1">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="xml-2" author="nilufer.polat">
+        <insert tableName="book">
+            <column name="name" value="Suç ve Ceza" />
+            <column name="name" value="Sefiller" />
+        </insert>
+    </changeSet>
+    <changeSet id="insert-2" author="nilufer.polat">
+        <insert tableName="book">
+            <column name="name" value="Suç ve Ceza" />
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase-docs" id="addColumn-example">
+        <addColumn catalogName="cat"
+                   schemaName= "public"
+                   tableName="book">
+            <column name="student_id"
+                    type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet  author="liquibase-docs"  id="addForeignKeyConstraint-example">
+        <addForeignKeyConstraint  baseColumnNames="student_id"
+                                  baseTableName="book"
+                                  baseTableSchemaName="public"
+                                  constraintName="fk_address_person"
+                                  deferrable="true"
+                                  initiallyDeferred="true"
+                                  referencedColumnNames="id"
+                                  referencedTableName="person"
+                                  referencedTableSchemaName="public"
+                                  validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>
